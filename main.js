@@ -9,8 +9,8 @@ recognition.interimResults = false;
 recognition.maxAlternatives = 1;
 
 recognition.onresult = (event) => {
-    const speach = event.results[0][0].transcript;
-    console.log(speach);
+    const speech = event.results[0][0].transcript;
+    console.log(speech);
 }
 
 
