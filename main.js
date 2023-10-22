@@ -10,11 +10,12 @@ recognition.maxAlternatives = 1;
 
 recognition.onresult = (event) => {
     const speech = event.results[0][0].transcript;
-    console.log(speech);
+    console.log(speech)
+    document.getElementById("theRecordedText").innerHTML = speech;
 }
 
 recognition.onspeechend = function() {
-    console.log("this was said:" + recognition.results);
+    console.log("this was said: cool placeholder code to understand more" + finalSpeechResults);
   }
   
 recognition.onerror = function(event) {
@@ -31,13 +32,13 @@ recognition.onerror = function(event) {
 startBtn.onclick = () => {
   recognition.start();
   // const speech = event.results[0][0].transcript;
-  document.getElementById("recordedText").innerHTML = "your speech is being recorded";
+  document.getElementById("intimation").innerHTML = "your speech is now being recorded";
   console.log("speech recognition has started");
 }
 
 recognition.addEventListener("result", (event) => {
   const resultsToBePrinted = event.results[0][0].transcript;
-  diagnostic.textContent = `Results received: ${resultsToBePrinted}.`;
+  diagnostic.textContent = `Results received: ${event.results[0][0].transcript}.`;
   document.getElementById("recordedText").innerHTML = resultsToBePrinted;
   // bg.style.backgroundColor = resultsToBePrinted;
 });
@@ -46,4 +47,5 @@ recognition.addEventListener("result", (event) => {
 endBtn.onclick = () => {
     recognition.abort();
     console.log("Speech recognition aborted.");
-  };
+    document.getElementById("intimation").innerHTML = "Speech recognition aborted";
+    };
